@@ -4,6 +4,7 @@ from omegaconf import OmegaConf
 from tqdm import tqdm
 from PIL import Image
 
+from ema_pytorch import EMA
 import numpy as np
 import torch
 import matplotlib.pyplot as plt
@@ -29,23 +30,23 @@ config = {
     },
     'dataset' : {
         'tokens' : 16,
-        'samples' : 128,
-        'batch_size' : 128,
+        'samples' : 256,
+        'batch_size' : 256,
     },
     'model' : {
-        'hidden_size'   : 64,
-        'cond_dim'      : 64,
+        'hidden_size'   : 32,
+        'cond_dim'      : 32,
         'n_heads'       : 1,
-        'n_blocks'      : 3,
+        'n_blocks'      : 2,
         'dropout'       : 0.1,
         'scale_by_sigma' : False,
     },
     'optim' : {
-        'lr' : 1e-3,
-        'epochs' : 10000
+        'lr' : 0,
+        'epochs' : 1000,
+        'grad_clip_norm' : 100,
     }
 }
-
 config = OmegaConf.create(config)
 
 
@@ -63,7 +64,7 @@ def get_dataset(config):
     return dl
 
 
-def validation(model, scheduler, output_path):
+def validation(model, scheduler, config):
     scheduler.set_timesteps(num_inference_steps=1000, offset=0, device=device)
 
     num_batch = 5
@@ -86,7 +87,10 @@ def validation(model, scheduler, output_path):
 
     # return as images
     images = [
-        Image.fromarray(xt[i].view(size, size).cpu().numpy().astype(np.uint8))
+        Image.fromarray(
+            (255 / config.dataset.tokens * xt[i])
+            .view(size, size).cpu().numpy().astype(np.uint8)
+        )
         for i in range(num_batch)
     ]
 
@@ -94,21 +98,17 @@ def validation(model, scheduler, output_path):
 
 
 def init_wandb(config):
+    wandb.login()
     wandb.init(
         project=config.project, 
         config={
             'lr': config.optim.lr,
             'batch_size': config.dataset.batch_size,
         },
-        # name=exp_name,
+        name=f'mnist-tokens_{config.dataset.tokens}-samples_{config.dataset.samples}-lr_{config.optim.lr}-batch_size_{config.dataset.batch_size}',
     )
 
-
-if __name__ == '__main__':
-    # path
-    output_dir = f'runs/mnist-{config.dataset.samples}'
-    os.makedirs(output_dir, exist_ok=True)
-
+def main(config):
     # wand init
     init_wandb(config)
 
@@ -117,6 +117,7 @@ if __name__ == '__main__':
     
     # load model
     model = SEDD(config)
+    ema = EMA(model, beta=0.9999, update_after_step=100, update_every=10)
 
     # load scheduler, loss function
     scheduler = Scheduler(config)
@@ -127,7 +128,9 @@ if __name__ == '__main__':
 
     model.to(device, dtype)
     scheduler.to(device, dtype)
+    ema.to(device, dtype)
 
+    wandb.watch(model, loss_fn, log='all', log_freq=10)
     for epoch in tqdm(range(config.optim.epochs)):
         model.train()
         for x0, _ in dl:
@@ -149,8 +152,11 @@ if __name__ == '__main__':
             
             # update
             loss.backward()
+            torch.nn.utils.clip_grad_norm_(model.parameters(), config.optim.grad_clip_norm)
             optimizer.step()
             optimizer.zero_grad()
+            
+            ema.update()
 
             # track
             wandb.log({"loss": loss.item()})
@@ -158,8 +164,16 @@ if __name__ == '__main__':
         # track
         if epoch % 1000 == 0:
             model.eval()
-            images = validation(model, scheduler, f'{output_dir}/{epoch}.png')
+            ema.eval()
             
+            images = validation(ema, scheduler, config)
+            wandb.log(
+                {"ema-generated images": [
+                    wandb.Image(image) for image in images
+                ]}
+            )
+
+            images = validation(model, scheduler, config)
             wandb.log(
                 {"generated images": [
                     wandb.Image(image) for image in images
@@ -167,3 +181,8 @@ if __name__ == '__main__':
             )
 
     wandb.finish()
+
+if __name__ == '__main__':
+    for lr in [1e-5, 1e-4, 1e-3, 1e-2, 1e-1]:
+        config.optim.lr = lr
+        main(config)

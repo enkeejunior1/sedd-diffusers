@@ -35,7 +35,7 @@ class SEDD(nn.Module):
         t_emb = self.time_emb(t)[:, None, :]
         x = x + t_emb
         
-        x = x.permute(1,0,2)
+        x = x.permute(1,0,2) # B, L, H -> L, B, H
         x = self.pos_emb(x)
 
         # mid
@@ -44,7 +44,7 @@ class SEDD(nn.Module):
 
         # out
         x = self.W_out(x)
-        x = x.permute(1,0,2)
+        x = x.permute(1,0,2) # L, B, H -> B, L, H
         return x
     
 
@@ -87,6 +87,7 @@ class TimestepEmbedder(nn.Module):
         t_freq = self.timestep_embedding(t, self.frequency_embedding_size)
         t_emb = self.mlp(t_freq)
         return t_emb
+    
     
 class PositionalEncoding(nn.Module):
 
