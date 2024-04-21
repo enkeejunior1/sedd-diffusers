@@ -4,6 +4,7 @@ from omegaconf import OmegaConf
 from tqdm import tqdm
 from PIL import Image
 
+import numpy as np
 import torch
 import matplotlib.pyplot as plt
 from torchvision import datasets
