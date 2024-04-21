@@ -1,1 +1,1 @@
-pip install transformers diffusers einops omegaconf accelerate
+pip install transformers diffusers einops omegaconf accelerate wandb

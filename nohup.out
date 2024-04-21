@@ -1,0 +1,64 @@
+wandb: Currently logged in as: enkeejunior1. Use `wandb login --relogin` to force relogin
+wandb: Tracking run with wandb version 0.16.6
+wandb: Run data is saved locally in /home/nsml/sedd-diffusers/wandb/run-20240421_073143-3tjplkio
+wandb: Run `wandb offline` to turn off syncing.
+wandb: Syncing run fine-resonance-2
+wandb: ⭐️ View project at https://wandb.ai/enkeejunior1/sedd-mnist
+wandb: 🚀 View run at https://wandb.ai/enkeejunior1/sedd-mnist/runs/3tjplkio
+  0%|          | 0/10000 [00:00<?, ?it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s][A
+  2%|▏         | 16/1000 [00:00<00:06, 156.83it/s][A
+  4%|▍         | 45/1000 [00:00<00:04, 230.35it/s][A
+  7%|▋         | 73/1000 [00:00<00:03, 252.57it/s][A
+ 10%|█         | 101/1000 [00:00<00:03, 261.63it/s][A
+ 13%|█▎        | 130/1000 [00:00<00:03, 268.81it/s][A
+ 16%|█▌        | 158/1000 [00:00<00:03, 272.25it/s][A
+ 19%|█▊        | 187/1000 [00:00<00:02, 275.24it/s][A
+ 22%|██▏       | 216/1000 [00:00<00:02, 277.24it/s][A
+ 24%|██▍       | 245/1000 [00:00<00:02, 278.62it/s][A
+ 27%|██▋       | 274/1000 [00:01<00:02, 279.35it/s][A
+ 30%|███       | 302/1000 [00:01<00:02, 279.24it/s][A
+ 33%|███▎      | 331/1000 [00:01<00:02, 280.08it/s][A
+ 36%|███▌      | 360/1000 [00:01<00:02, 279.75it/s][A
+ 39%|███▉      | 388/1000 [00:01<00:02, 278.90it/s][A
+ 42%|████▏     | 417/1000 [00:01<00:02, 279.68it/s][A
+ 45%|████▍     | 446/1000 [00:01<00:01, 280.13it/s][A
+ 48%|████▊     | 475/1000 [00:01<00:01, 279.44it/s][A
+ 50%|█████     | 504/1000 [00:01<00:01, 280.08it/s][A
+ 53%|█████▎    | 533/1000 [00:01<00:01, 280.36it/s][A
+ 56%|█████▌    | 562/1000 [00:02<00:01, 280.72it/s][A
+ 59%|█████▉    | 591/1000 [00:02<00:01, 280.91it/s][A
+ 62%|██████▏   | 620/1000 [00:02<00:01, 280.82it/s][A
+ 65%|██████▍   | 649/1000 [00:02<00:01, 281.03it/s][A
+ 68%|██████▊   | 678/1000 [00:02<00:01, 279.97it/s][A
+ 71%|███████   | 707/1000 [00:02<00:01, 280.05it/s][A
+ 74%|███████▎  | 736/1000 [00:02<00:00, 280.42it/s][A
+ 76%|███████▋  | 765/1000 [00:02<00:00, 280.29it/s][A
+ 79%|███████▉  | 794/1000 [00:02<00:00, 280.63it/s][A
+ 82%|████████▏ | 823/1000 [00:02<00:00, 280.89it/s][A
+ 85%|████████▌ | 852/1000 [00:03<00:00, 280.65it/s][A
+ 88%|████████▊ | 881/1000 [00:03<00:00, 280.61it/s][A
+ 91%|█████████ | 910/1000 [00:03<00:00, 280.54it/s][A
+ 94%|█████████▍| 939/1000 [00:03<00:00, 280.30it/s][A
+ 97%|█████████▋| 968/1000 [00:03<00:00, 280.60it/s][A
+100%|█████████▉| 997/1000 [00:03<00:00, 280.50it/s][A100%|█████████▉| 999/1000 [00:03<00:00, 276.72it/s]
+  0%|          | 0/10000 [00:04<?, ?it/s]
+Traceback (most recent call last):
+  File "/home/nsml/sedd-diffusers/main-mnist.py", line 160, in <module>
+    images = validation(model, scheduler, f'{output_dir}/{epoch}.png')
+  File "/home/nsml/sedd-diffusers/main-mnist.py", line 87, in validation
+    images = [
+  File "/home/nsml/sedd-diffusers/main-mnist.py", line 88, in <listcomp>
+    Image.fromarray(xt[i].view(size, size).cpu().numpy().astype(np.uint8))
+NameError: name 'np' is not defined
+wandb: - 0.007 MB of 0.007 MB uploadedwandb: \ 0.007 MB of 0.007 MB uploadedwandb: | 0.007 MB of 0.012 MB uploadedwandb: / 0.012 MB of 0.012 MB uploadedwandb: 
+wandb: Run history:
+wandb: loss ▁
+wandb: 
+wandb: Run summary:
+wandb: loss 6172164.0
+wandb: 
+wandb: 🚀 View run fine-resonance-2 at: https://wandb.ai/enkeejunior1/sedd-mnist/runs/3tjplkio
+wandb: ⭐️ View project at: https://wandb.ai/enkeejunior1/sedd-mnist
+wandb: Synced 5 W&B file(s), 0 media file(s), 0 artifact file(s) and 0 other file(s)
+wandb: Find logs at: ./wandb/run-20240421_073143-3tjplkio/logs

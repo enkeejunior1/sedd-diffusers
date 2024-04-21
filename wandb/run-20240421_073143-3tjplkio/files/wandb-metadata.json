@@ -1,0 +1,328 @@
+{
+    "os": "Linux-4.18.0-425.19.2.el8_7.x86_64-x86_64-with-glibc2.35",
+    "python": "3.10.12",
+    "heartbeatAt": "2024-04-21T07:31:44.289061",
+    "startedAt": "2024-04-21T07:31:43.215254",
+    "docker": null,
+    "cuda": null,
+    "args": [],
+    "state": "running",
+    "program": "/home/nsml/sedd-diffusers/main-mnist.py",
+    "codePathLocal": "main-mnist.py",
+    "codePath": "main-mnist.py",
+    "git": {
+        "remote": "https://github.com/enkeejunior1/sedd-diffusers.git",
+        "commit": "e1964ab83aac903f02c14420534a02fe0bb5e47e"
+    },
+    "email": null,
+    "root": "/home/nsml/sedd-diffusers",
+    "host": "node0",
+    "username": "nsml",
+    "executable": "/usr/bin/python3",
+    "cpu_count": 28,
+    "cpu_count_logical": 56,
+    "cpu_freq": {
+        "current": 2214.0655535714286,
+        "min": 1000.0,
+        "max": 2201.0
+    },
+    "cpu_freq_per_core": [
+        {
+            "current": 2201.0,
+            "min": 1000.0,
+            "max": 2201.0
+        },
+        {
+            "current": 2201.0,
+            "min": 1000.0,
+            "max": 2201.0
+        },
+        {
+            "current": 2201.0,
+            "min": 1000.0,
+            "max": 2201.0
+        },
+        {
+            "current": 2201.0,
+            "min": 1000.0,
+            "max": 2201.0
+        },
+        {
+            "current": 2201.0,
+            "min": 1000.0,
+            "max": 2201.0
+        },
+        {
+            "current": 2201.0,
+            "min": 1000.0,
+            "max": 2201.0
+        },
+        {
+            "current": 2201.0,
+            "min": 1000.0,
+            "max": 2201.0
+        },
+        {
+            "current": 2201.0,
+            "min": 1000.0,
+            "max": 2201.0
+        },
+        {
+            "current": 2201.0,
+            "min": 1000.0,
+            "max": 2201.0
+        },
+        {
+            "current": 2201.0,
+            "min": 1000.0,
+            "max": 2201.0
+        },
+        {
+            "current": 2599.999,
+            "min": 1000.0,
+            "max": 2201.0
+        },
+        {
+            "current": 2201.0,
+            "min": 1000.0,
+            "max": 2201.0
+        },
+        {
+            "current": 2201.0,
+            "min": 1000.0,
+            "max": 2201.0
+        },
+        {
+            "current": 2201.0,
+            "min": 1000.0,
+            "max": 2201.0
+        },
+        {
+            "current": 2201.0,
+            "min": 1000.0,
+            "max": 2201.0
+        },
+        {
+            "current": 2201.0,
+            "min": 1000.0,
+            "max": 2201.0
+        },
+        {
+            "current": 2201.0,
+            "min": 1000.0,
+            "max": 2201.0
+        },
+        {
+            "current": 2201.0,
+            "min": 1000.0,
+            "max": 2201.0
+        },
+        {
+            "current": 2201.0,
+            "min": 1000.0,
+            "max": 2201.0
+        },
+        {
+            "current": 2201.0,
+            "min": 1000.0,
+            "max": 2201.0
+        },
+        {
+            "current": 2201.0,
+            "min": 1000.0,
+            "max": 2201.0
+        },
+        {
+            "current": 2201.0,
+            "min": 1000.0,
+            "max": 2201.0
+        },
+        {
+            "current": 2201.0,
+            "min": 1000.0,
+            "max": 2201.0
+        },
+        {
+            "current": 2201.0,
+            "min": 1000.0,
+            "max": 2201.0
+        },
+        {
+            "current": 2201.0,
+            "min": 1000.0,
+            "max": 2201.0
+        },
+        {
+            "current": 2201.0,
+            "min": 1000.0,
+            "max": 2201.0
+        },
+        {
+            "current": 2201.0,
+            "min": 1000.0,
+            "max": 2201.0
+        },
+        {
+            "current": 2201.0,
+            "min": 1000.0,
+            "max": 2201.0
+        },
+        {
+            "current": 2201.0,
+            "min": 1000.0,
+            "max": 2201.0
+        },
+        {
+            "current": 2201.0,
+            "min": 1000.0,
+            "max": 2201.0
+        },
+        {
+            "current": 2201.0,
+            "min": 1000.0,
+            "max": 2201.0
+        },
+        {
+            "current": 2201.0,
+            "min": 1000.0,
+            "max": 2201.0
+        },
+        {
+            "current": 2201.0,
+            "min": 1000.0,
+            "max": 2201.0
+        },
+        {
+            "current": 2201.0,
+            "min": 1000.0,
+            "max": 2201.0
+        },
+        {
+            "current": 2201.0,
+            "min": 1000.0,
+            "max": 2201.0
+        },
+        {
+            "current": 2201.0,
+            "min": 1000.0,
+            "max": 2201.0
+        },
+        {
+            "current": 2201.0,
+            "min": 1000.0,
+            "max": 2201.0
+        },
+        {
+            "current": 2201.0,
+            "min": 1000.0,
+            "max": 2201.0
+        },
+        {
+            "current": 2201.0,
+            "min": 1000.0,
+            "max": 2201.0
+        },
+        {
+            "current": 2201.0,
+            "min": 1000.0,
+            "max": 2201.0
+        },
+        {
+            "current": 2201.0,
+            "min": 1000.0,
+            "max": 2201.0
+        },
+        {
+            "current": 2201.0,
+            "min": 1000.0,
+            "max": 2201.0
+        },
+        {
+            "current": 2201.0,
+            "min": 1000.0,
+            "max": 2201.0
+        },
+        {
+            "current": 2201.0,
+            "min": 1000.0,
+            "max": 2201.0
+        },
+        {
+            "current": 2405.977,
+            "min": 1000.0,
+            "max": 2201.0
+        },
+        {
+            "current": 2201.0,
+            "min": 1000.0,
+            "max": 2201.0
+        },
+        {
+            "current": 2201.0,
+            "min": 1000.0,
+            "max": 2201.0
+        },
+        {
+            "current": 2201.0,
+            "min": 1000.0,
+            "max": 2201.0
+        },
+        {
+            "current": 2201.0,
+            "min": 1000.0,
+            "max": 2201.0
+        },
+        {
+            "current": 2201.0,
+            "min": 1000.0,
+            "max": 2201.0
+        },
+        {
+            "current": 2201.0,
+            "min": 1000.0,
+            "max": 2201.0
+        },
+        {
+            "current": 2201.0,
+            "min": 1000.0,
+            "max": 2201.0
+        },
+        {
+            "current": 2201.0,
+            "min": 1000.0,
+            "max": 2201.0
+        },
+        {
+            "current": 2201.0,
+            "min": 1000.0,
+            "max": 2201.0
+        },
+        {
+            "current": 2201.0,
+            "min": 1000.0,
+            "max": 2201.0
+        },
+        {
+            "current": 2201.0,
+            "min": 1000.0,
+            "max": 2201.0
+        }
+    ],
+    "disk": {
+        "/": {
+            "total": 3070.5,
+            "used": 431.5494041442871
+        }
+    },
+    "gpu": "Tesla V100-PCIE-32GB",
+    "gpu_count": 1,
+    "gpu_devices": [
+        {
+            "name": "Tesla V100-PCIE-32GB",
+            "memory_total": 34359738368
+        }
+    ],
+    "memory": {
+        "total": 376.32275772094727
+    }
+}
