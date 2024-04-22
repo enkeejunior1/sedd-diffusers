@@ -42,8 +42,8 @@ config = {
         'scale_by_sigma' : False,
     },
     'optim' : {
-        'lr' : 0,
-        'epochs' : 1000,
+        'lr' : 0.003,
+        'epochs' : 50000,
         'grad_clip_norm' : 100,
     }
 }
@@ -162,7 +162,7 @@ def main(config):
             wandb.log({"loss": loss.item()})
 
         # track
-        if epoch % 1000 == 0:
+        if epoch % 250 == 0:
             model.eval()
             ema.eval()
             
@@ -183,6 +183,4 @@ def main(config):
     wandb.finish()
 
 if __name__ == '__main__':
-    for lr in [1e-5, 1e-4, 1e-3, 1e-2, 1e-1]:
-        config.optim.lr = lr
-        main(config)
+    main(config)

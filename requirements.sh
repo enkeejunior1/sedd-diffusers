@@ -1,1 +1,1 @@
-pip install transformers diffusers einops omegaconf accelerate wandb ema-pytorch
+pip install transformers diffusers einops omegaconf accelerate wandb ema-pytorch positional-encodings[pytorch]

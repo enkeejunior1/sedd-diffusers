@@ -8,7 +8,14 @@ class SEDD(nn.Module):
         super().__init__()
 
         self.time_emb = TimestepEmbedder(config.model.hidden_size)
-        self.pos_emb = PositionalEncoding(config.model.hidden_size, dropout=0.0)
+        if config.model.positional_embedding == '1d':
+            self.pos_emb_dim = '1d'
+            self.pos_emb = PositionalEncoding(config.model.hidden_size, dropout=0.0)
+        elif config.model.positional_embedding == '2d':
+            self.pos_emb_dim = '2d'
+            self.size = config.dataset.size
+            from positional_encodings.torch_encodings import PositionalEncoding2D, Summer
+            self.pos_emb = Summer(PositionalEncoding2D(config.model.hidden_size))
 
         self.W_in = nn.Embedding(
             config.dataset.tokens + 1, 
@@ -29,14 +36,21 @@ class SEDD(nn.Module):
 
     def forward(self, x, t):
         assert len(x.shape) == 2
+        b, l = x.shape
         
         # in
         x = self.W_in(x)
         t_emb = self.time_emb(t)[:, None, :]
         x = x + t_emb
         
-        x = x.permute(1,0,2) # B, L, H -> L, B, H
-        x = self.pos_emb(x)
+        if self.pos_emb_dim == '1d':
+            x = x.permute(1,0,2) # B, L, H -> L, B, H
+            x = self.pos_emb(x)
+
+        if self.pos_emb_dim == '2d':
+            x = x.reshape(b, self.size, self.size, -1)
+            x = self.pos_emb(x).reshape(b, l, -1)
+            x = x.permute(1,0,2) # B, L, H -> L, B, H
 
         # mid
         for block in self.blocks:
